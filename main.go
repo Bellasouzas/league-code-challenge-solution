@@ -1,22 +1,25 @@
-package league_code_challenge_solution
+package main
 
 import (
-	"github.com/bellasouzas/league-code-challenge-solution/routers"
+	"fmt"
+	"github.com/bellasouzas/league-code-challenge-solution/routes"
 	"github.com/gorilla/mux"
 	"log"
 	"net/http"
 )
 
-const address = ":8080"
+//curl -F 'file=@./matrix/matrix.csv' "localhost:8080/echo"
+
+const port = ":8080"
 
 func main() {
+
 	router := mux.NewRouter()
+	router.HandleFunc("/echo", routes.HandleEcho)
+	//router.HandleFunc("/invert", routes.HandleInvert)
+	//	router.HandleFunc("/echo", routes.HandleFlatten) router.HandleFunc("/echo",
+	//	routes.HandleSum) router.HandleFunc("/echo", routes.HandleMultiply)
 
-	router.HandleFunc("/echo", routers.HandleEcho)
-	//	router.HandleFunc("/echo", routers.HandleInvert)
-	//	router.HandleFunc("/echo", routers.HandleFlatten)
-	//	router.HandleFunc("/echo", routers.HandleSum)
-	//	router.HandleFunc("/echo", routers.HandleMultiply)
-
-	log.Fatal(http.ListenAndServe(address, nil))
+	fmt.Printf("Server is running at %s", port)
+	log.Fatal(http.ListenAndServe(port, router))
 }
