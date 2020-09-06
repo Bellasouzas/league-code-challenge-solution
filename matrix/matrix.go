@@ -24,9 +24,3 @@ func ReadCsv(csvFile io.Reader) [][]string {
 	}
 	return matrix
 }
-
-////CsvReaderRow parse row csv file
-//func CsvReaderRow() {
-//
-//
-//}

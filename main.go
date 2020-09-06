@@ -16,7 +16,7 @@ func main() {
 
 	router := mux.NewRouter()
 	router.HandleFunc("/echo", routes.HandleEcho)
-	//router.HandleFunc("/invert", routes.HandleInvert)
+	router.HandleFunc("/invert", routes.HandleInvert)
 	//	router.HandleFunc("/echo", routes.HandleFlatten) router.HandleFunc("/echo",
 	//	routes.HandleSum) router.HandleFunc("/echo", routes.HandleMultiply)
 
