@@ -37,3 +37,17 @@ func Invert(records [][]string) string {
 
 	return response
 }
+
+func Flatten(records [][]string) string {
+	var list string
+	var response string
+
+	for i := 0; i < len(records); i++ {
+		for j := 0; j < len(records[i]); j++ {
+			list = list + records[i][j] + ","
+
+		}
+	}
+	response = list[0 : len(list)-1]
+	return response
+}

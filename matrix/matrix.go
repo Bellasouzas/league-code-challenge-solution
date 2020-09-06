@@ -9,7 +9,6 @@ import (
 //OpenCsv open and read csv file
 func ReadCsv(csvFile io.Reader) [][]string {
 	var matrix [][]string
-	//read file
 	records := csv.NewReader(csvFile)
 	println(records)
 	for {

@@ -42,9 +42,29 @@ func HandleInvert(res http.ResponseWriter, req *http.Request) {
 }
 
 //HandleFlatten
-//func HandleFlatten(res http.ResponseWriter, req *http.Request) {
-//
-//}
+func HandleFlatten(res http.ResponseWriter, req *http.Request) {
+	file, _, err := req.FormFile("file")
+	if err != nil {
+		res.Write([]byte(fmt.Sprintf("error %s", err.Error())))
+		return
+	}
+	defer file.Close()
+	records := matrix.ReadCsv(file)
+	response := controllers.Flatten(records)
+	// Asserting that the input matrix is NxN dimentional
+	var inputTest = 0
+	for i := 0; i < len(records); i++ {
+		if len(records[i]) != len(records) {
+			inputTest++
+		}
+	}
+	if inputTest != 0 {
+		fmt.Fprint(res, "The input matrix needs to be NxN dimention\n")
+		return
+	}
+	fmt.Fprint(res, response, "\n")
+	return
+}
 
 //HandleSum
 //func HandleSum(res http.ResponseWriter, req *http.Request) {
