@@ -53,7 +53,7 @@ func Flatten(records [][]string) string {
 	return response
 }
 
-//sum all channels from Sum func
+//sum all channels
 func sumChannel(ch chan int) int {
 	var total int
 	for val := range ch {
@@ -88,8 +88,20 @@ func Sum(records [][]string) int {
 	}
 	wg.Wait()
 	close(receive)
-
 	response := sumChannel(receive)
+	return response
+}
 
+//Nultiply func sums all values from matrix
+func Multiply(records [][]string) int {
+	valuesToMultiply := matrix.MatrixInt(records)
+	multipy_counter := 1
+
+	for i := 0; i < len(valuesToMultiply); i++ {
+		for j := 0; j < len(valuesToMultiply[i]); j++ {
+			multipy_counter *= valuesToMultiply[i][j]
+		}
+	}
+	response := multipy_counter
 	return response
 }
