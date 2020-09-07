@@ -19,7 +19,7 @@ func main() {
 	router.HandleFunc("/echo", routes.HandleEcho)
 	router.HandleFunc("/invert", routes.HandleInvert)
 	router.HandleFunc("/flatten", routes.HandleFlatten)
-	//	routes.HandleSum) router.HandleFunc("/echo", routes.HandleMultiply)
+	router.HandleFunc("/sum", routes.HandleSum)
 
 	fmt.Printf("Server is running at %s", port)
 	log.Fatal(http.ListenAndServe(port, router))

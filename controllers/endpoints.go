@@ -3,6 +3,7 @@ package controllers
 import (
 	"fmt"
 	"strings"
+	"sync"
 )
 
 // Echo takes a csv file as request and returns a print in the console
@@ -45,9 +46,48 @@ func Flatten(records [][]string) string {
 	for i := 0; i < len(records); i++ {
 		for j := 0; j < len(records[i]); j++ {
 			list = list + records[i][j] + ","
-
 		}
 	}
 	response = list[0 : len(list)-1]
+	return response
+}
+
+//sum all channels from Sum func
+func sumChannel(ch chan int) int {
+	var total int
+	for val := range ch {
+		total += val
+	}
+	return total
+}
+
+//Sum func sums all values from matrix
+func Sum(records [][]string) int {
+
+	matrix := []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
+	const channel_counter = 4
+	send := make(chan int)
+	receive := make(chan int, channel_counter)
+
+	go func() {
+		for _, value := range matrix {
+			send <- value
+		}
+		close(send)
+	}()
+	var wg sync.WaitGroup
+	wg.Add(channel_counter)
+
+	for i := 0; i < channel_counter; i++ {
+		go func() {
+			receive <- sumChannel(send)
+			wg.Done()
+		}()
+	}
+	wg.Wait()
+	close(receive)
+
+	response := sumChannel(receive)
+
 	return response
 }

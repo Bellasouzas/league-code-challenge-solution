@@ -66,10 +66,20 @@ func HandleFlatten(res http.ResponseWriter, req *http.Request) {
 	return
 }
 
-//HandleSum
-//func HandleSum(res http.ResponseWriter, req *http.Request) {
-//
-//}
+//HandleSum sums all value from matrix
+func HandleSum(res http.ResponseWriter, req *http.Request) {
+	file, _, err := req.FormFile("file")
+	if err != nil {
+		res.Write([]byte(fmt.Sprintf("error %s", err.Error())))
+		return
+	}
+	defer file.Close()
+	records := matrix.ReadCsv(file)
+	response := controllers.Sum(records)
+
+	fmt.Fprint(res, response, "\n")
+	return
+}
 
 //HandleMultiply
 //func HandleMultiply(res http.ResponseWriter, req *http.Request) {
