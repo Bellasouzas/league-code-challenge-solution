@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"fmt"
+	"github.com/bellasouzas/league-code-challenge-solution/matrix"
 	"strings"
 	"sync"
 )
@@ -63,15 +64,16 @@ func sumChannel(ch chan int) int {
 
 //Sum func sums all values from matrix
 func Sum(records [][]string) int {
-
-	matrix := []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
+	valuesToSum := matrix.MatrixInt(records)
 	const channel_counter = 4
 	send := make(chan int)
 	receive := make(chan int, channel_counter)
 
 	go func() {
-		for _, value := range matrix {
-			send <- value
+		for i := 0; i < len(valuesToSum); i++ {
+			for j := 0; j < len(valuesToSum[i]); j++ {
+				send <- valuesToSum[i][j]
+			}
 		}
 		close(send)
 	}()

@@ -25,16 +25,16 @@ func ReadCsv(csvFile io.Reader) [][]string {
 	return matrix
 }
 
-func MatrixInt(records []string) []int {
-	var matrixInt []int
-
-	for _, val := range records {
-		valInt, err := strconv.Atoi(val)
-		if err != nil {
-			return nil
+//MatrixInt convert matrix [][]string to [][]int
+func MatrixInt(matrix [][]string) [][]int {
+	var rowItems [][]int
+	for i := 0; i < len(matrix); i++ {
+		var row []int
+		for j := 0; j < len(matrix[i]); j++ {
+			valInt, _ := strconv.Atoi(matrix[i][j])
+			row = append(row, valInt)
 		}
-		matrixInt = append(matrixInt, valInt)
+		rowItems = append(rowItems, row)
 	}
-
-	return matrixInt
+	return rowItems
 }

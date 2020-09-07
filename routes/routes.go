@@ -66,7 +66,7 @@ func HandleFlatten(res http.ResponseWriter, req *http.Request) {
 	return
 }
 
-//HandleSum sums all value from matrix
+//HandleSum sums all values from matrix
 func HandleSum(res http.ResponseWriter, req *http.Request) {
 	file, _, err := req.FormFile("file")
 	if err != nil {
