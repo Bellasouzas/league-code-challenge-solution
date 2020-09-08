@@ -8,8 +8,8 @@ import (
 	"net/http"
 )
 
-//curl -F 'file=@./matrix/matrix.csv' "localhost:8080/echo"
-//curl -F 'file=@./matrix/matrix.csv' "localhost:8080/invert"
+//curl -F 'file=@./matrix/matrix.csv' "localhost:8000/echo"
+//curl -F 'file=@./matrix/matrix.csv' "localhost:8000/invert"
 
 const port = ":8000"
 
