@@ -7,8 +7,6 @@ import (
 	"net/http"
 )
 
-//HandleEcho takes a csv file as request and returns a print in the console
-// of the plain content of the file, line by line and comma separated
 func HandleEcho(res http.ResponseWriter, req *http.Request) {
 	file, _, err := req.FormFile("file")
 	if err != nil {

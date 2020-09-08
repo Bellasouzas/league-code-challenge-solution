@@ -7,10 +7,8 @@ import (
 	"sync"
 )
 
-//todo refatorar : trocar o nome do arquivo para controllers.go
-
-// Echo takes a csv file as request and returns a print in the console
-// of the plain content of the file, line by line and comma separated
+// Echo receive array and returns the plain content of the file,
+// line by line and comma separated
 func Echo(records [][]string) string {
 	var response string
 	for _, row := range records {
@@ -20,6 +18,7 @@ func Echo(records [][]string) string {
 }
 
 //Invert receives matrix NxN and transposed, in other words, lines and columns
+//inverted position
 func Invert(records [][]string) string {
 	var response string
 	xl := len(records[0])
@@ -42,7 +41,7 @@ func Invert(records [][]string) string {
 	return response
 }
 
-//todo refatorar doc
+// flatten receive array and returns the same data but flattened to just one liner string
 func Flatten(records [][]string) string {
 	var list string
 	var response string
@@ -65,7 +64,7 @@ func sumChannel(ch chan int) int {
 	return total
 }
 
-//Sum func sums all values from matrix
+// Sum receive array returns the sum of all values
 func Sum(records [][]string) int {
 	valuesToSum := matrix.MatrixInt(records)
 	const channel_counter = 4
@@ -95,7 +94,7 @@ func Sum(records [][]string) int {
 	return response
 }
 
-//Nultiply func sums all values from matrix
+// Multiply receive array and returns the product of all values
 func Multiply(records [][]string) int {
 	valuesToMultiply := matrix.MatrixInt(records)
 	multipy_counter := 1
