@@ -56,3 +56,16 @@ func TestSum(t *testing.T) {
 		t.Errorf("The result is not correct, got %d, expected %d", got, want)
 	}
 }
+
+func TestMultiply(t *testing.T) {
+	records := [][]string{
+		{"1", "2", "3"},
+		{"4", "5", "6"},
+		{"7", "8", "9"},
+	}
+	got := 362880
+	want := controllers.Multiply(records)
+	if got != want {
+		t.Errorf("The result is not correct, got %d, expected %d", got, want)
+	}
+}
