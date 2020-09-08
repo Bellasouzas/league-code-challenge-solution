@@ -41,9 +41,9 @@ directory.
 
 #### /echo
 
-To run this /echo you need open a new terminal into root the project:
+To run /echo you need open a new terminal into root the project:
 
-> ``curl -F 'file=@./fixtures/matrix.csv' "localhost:8000/echo"``
+> ``curl -F 'file=@./fixtures/matrix.csv' "localhost:8080/echo"``
 
    
     // Expected output
@@ -54,7 +54,7 @@ To run this /echo you need open a new terminal into root the project:
 
 #### /invert
 
-To run this /invert you need open a new terminal into root the project:
+To run /invert you need open a new terminal into root the project:
 
 
 > ``curl -F 'file=@./fixtures/matrix.csv' "localhost:8080/invert"``
@@ -67,7 +67,7 @@ To run this /invert you need open a new terminal into root the project:
 
 #### /flatten
 
-To run this /flatten you need open a new terminal into root the project:
+To run /flatten you need open a new terminal into root the project:
  
 
 > ``curl -F 'file=@./fixtures/matrix.csv' "localhost:8080/flatten"``
@@ -77,7 +77,7 @@ To run this /flatten you need open a new terminal into root the project:
 
 #### /sum
 
-To run this /sum you need open a new terminal into root the project:
+To run /sum you need open a new terminal into root the project:
  
 
 > ``curl -F 'file=@./fixtures/matrix.csv' "localhost:8080/sum"``
@@ -87,7 +87,7 @@ To run this /sum you need open a new terminal into root the project:
 
 #### /multiply
 
-To run this /multiply you need open a new terminal into root the project:
+To run /multiply you need open a new terminal into root the project:
 
 > ``curl -F 'file=@./fixtures/matrix.csv' "localhost:8080/invert"``
 
