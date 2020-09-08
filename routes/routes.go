@@ -75,6 +75,16 @@ func HandleSum(res http.ResponseWriter, req *http.Request) {
 	}
 	defer file.Close()
 	records := matrix.ReadCsv(file)
+
+	notValidated := []bool{matrix.MatrixIsSquare(records), matrix.MatrixIsNotEmpty(records)}
+	fmt.Println(notValidated)
+	for i := 0; i < len(notValidated); i++ {
+		if !notValidated[i] {
+			fmt.Fprint(res, ("This file is not validated"))
+			return
+		}
+	}
+
 	response := controllers.Sum(records)
 
 	fmt.Fprint(res, response, "\n")

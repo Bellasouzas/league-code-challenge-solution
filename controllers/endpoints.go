@@ -7,6 +7,8 @@ import (
 	"sync"
 )
 
+//todo refatorar : trocar o nome do arquivo para controllers.go
+
 // Echo takes a csv file as request and returns a print in the console
 // of the plain content of the file, line by line and comma separated
 func Echo(records [][]string) string {
