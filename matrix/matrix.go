@@ -38,3 +38,22 @@ func MatrixInt(matrix [][]string) [][]int {
 	}
 	return rowItems
 }
+
+// MatrixSquare return if matrix is square
+func matrixSquare(matrix [][]int) bool {
+	numRows := len(matrix)
+	for _, row := range matrix {
+		if len(row) != numRows {
+			return false
+		}
+	}
+	return true
+}
+
+//matrixIsEmpty return true if matrix is empty
+func matrixIsEmpty(matrix [][]int) bool {
+	if len(matrix) == 0 {
+		return true
+	}
+	return false
+}
