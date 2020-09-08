@@ -40,7 +40,7 @@ func MatrixInt(matrix [][]string) [][]int {
 }
 
 // MatrixSquare return if matrix is square
-func matrixSquare(matrix [][]int) bool {
+func MatrixSquare(matrix [][]int) bool {
 	numRows := len(matrix)
 	for _, row := range matrix {
 		if len(row) != numRows {
@@ -51,7 +51,7 @@ func matrixSquare(matrix [][]int) bool {
 }
 
 //matrixIsEmpty return true if matrix is empty
-func matrixIsEmpty(matrix [][]int) bool {
+func MatrixIsEmpty(matrix [][]int) bool {
 	if len(matrix) == 0 {
 		return true
 	}
