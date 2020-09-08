@@ -8,10 +8,7 @@ import (
 	"net/http"
 )
 
-//curl -F 'file=@./fixtures/matrix.csv' "localhost:8000/echo"
-//curl -F 'file=@./fixtures/matrix.csv' "localhost:8000/invert"
-
-const port = ":8000"
+const port = ":8080"
 
 func main() {
 
