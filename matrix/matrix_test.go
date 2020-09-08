@@ -1,7 +1,6 @@
 package matrix
 
 import (
-	"github.com/bellasouzas/league-code-challenge-solution/controllers"
 	"testing"
 )
 
@@ -15,31 +14,30 @@ func TestMatrixInt(t *testing.T) {
 		{"4", "5", "6"},
 		{"7", "8", "9"},
 	}
-	got := [][]int{1,2,3\n4,5,6,7,8,9}
+	got := [][]int{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}
 	want := MatrixInt(records)
-	if got != want {
-		t.Errorf("The result is not correct, got %d, expected %d", got, want)
+	if got == nil {
+		t.Errorf("The result is not correct, got %v, expected %v", got, want)
 	}
 }
 
 func TestMatrixIsEmpty(t *testing.T) {
-	squareEmpty := [][]int {{0},{0}}
-	got := true
-	want := MatrixIsEmpty(squareEmpty)
+	matrixEmpty := [][]string{}
+	got := false
+	want := MatrixIsNotEmpty(matrixEmpty)
 	if got != want {
-		t.Errorf("The result is not correct, got %v, expected %v", got, want)
+		t.Errorf("The result is not correct, got %t, expected %t", got, want)
 	}
 
 }
 
 func TestMatrixSquare(t *testing.T) {
-	squareMatrix := [][]int{
-		{1, 2, 3},
-		{4, 5, 6},
-		{7, 8, 9},
+	matrixNotSquare := [][]string{
+		{"1", "2", "3"},
+		{"4", "5", "6"},
 	}
 	got := true
-	want := MatrixSquare(squareMatrix)
+	want := MatrixIsNotEmpty(matrixNotSquare)
 	if got != want {
 		t.Errorf("The result is not correct, got %v, expected %v", got, want)
 	}

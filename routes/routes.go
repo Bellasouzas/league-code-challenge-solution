@@ -31,8 +31,6 @@ func HandleEcho(res http.ResponseWriter, req *http.Request) {
 
 }
 
-//HandleInvert takes a csv file as request and returns a print in the console
-// of the same data but transposed, in other words, lines and columns
 func HandleInvert(res http.ResponseWriter, req *http.Request) {
 	file, _, err := req.FormFile("file")
 	if err != nil {
@@ -80,7 +78,6 @@ func HandleFlatten(res http.ResponseWriter, req *http.Request) {
 	return
 }
 
-//HandleSum sums all values from matrix
 func HandleSum(res http.ResponseWriter, req *http.Request) {
 	file, _, err := req.FormFile("file")
 	if err != nil {
@@ -104,7 +101,6 @@ func HandleSum(res http.ResponseWriter, req *http.Request) {
 	return
 }
 
-//HandleMultiply sends values from records multiplied
 func HandleMultiply(res http.ResponseWriter, req *http.Request) {
 	file, _, err := req.FormFile("file")
 	if err != nil {

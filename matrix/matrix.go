@@ -7,7 +7,7 @@ import (
 	"strconv"
 )
 
-//OpenCsv open and read csv file
+//ReadCsv open and read csv file
 func ReadCsv(csvFile io.Reader) [][]string {
 	var matrix [][]string
 	records := csv.NewReader(csvFile)
@@ -39,7 +39,7 @@ func MatrixInt(matrix [][]string) [][]int {
 	return rowItems
 }
 
-// MatrixSquare return if matrix is square
+// MatrixSquare return true if matrix is square
 func MatrixIsSquare(matrix [][]string) bool {
 	numRows := len(matrix)
 	for _, row := range matrix {
