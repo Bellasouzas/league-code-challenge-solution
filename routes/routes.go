@@ -18,6 +18,15 @@ func HandleEcho(res http.ResponseWriter, req *http.Request) {
 	defer file.Close()
 
 	records := matrix.ReadCsv(file)
+
+	notValidated := []bool{matrix.MatrixIsSquare(records), matrix.MatrixIsNotEmpty(records)}
+	for i := 0; i < len(notValidated); i++ {
+		if !notValidated[i] {
+			fmt.Fprint(res, ("This file is not validated"))
+			return
+		}
+	}
+
 	response := controllers.Echo(records)
 
 	fmt.Fprint(res, response)
@@ -35,13 +44,21 @@ func HandleInvert(res http.ResponseWriter, req *http.Request) {
 	defer file.Close()
 
 	records := matrix.ReadCsv(file)
+
+	notValidated := []bool{matrix.MatrixIsSquare(records), matrix.MatrixIsNotEmpty(records)}
+	for i := 0; i < len(notValidated); i++ {
+		if !notValidated[i] {
+			fmt.Fprint(res, ("This file is not validated"))
+			return
+		}
+	}
+
 	response := controllers.Invert(records)
 
 	fmt.Fprint(res, response, "\n")
 	return
 }
 
-//HandleFlatten
 func HandleFlatten(res http.ResponseWriter, req *http.Request) {
 	file, _, err := req.FormFile("file")
 	if err != nil {
@@ -50,18 +67,17 @@ func HandleFlatten(res http.ResponseWriter, req *http.Request) {
 	}
 	defer file.Close()
 	records := matrix.ReadCsv(file)
-	response := controllers.Flatten(records)
-	// Asserting that the input matrix is NxN dimentional
-	var inputTest = 0
-	for i := 0; i < len(records); i++ {
-		if len(records[i]) != len(records) {
-			inputTest++
+
+	notValidated := []bool{matrix.MatrixIsSquare(records), matrix.MatrixIsNotEmpty(records)}
+	for i := 0; i < len(notValidated); i++ {
+		if !notValidated[i] {
+			fmt.Fprint(res, ("This file is not validated"))
+			return
 		}
 	}
-	if inputTest != 0 {
-		fmt.Fprint(res, "The input matrix needs to be NxN dimention\n")
-		return
-	}
+
+	response := controllers.Flatten(records)
+
 	fmt.Fprint(res, response, "\n")
 	return
 }
@@ -77,7 +93,6 @@ func HandleSum(res http.ResponseWriter, req *http.Request) {
 	records := matrix.ReadCsv(file)
 
 	notValidated := []bool{matrix.MatrixIsSquare(records), matrix.MatrixIsNotEmpty(records)}
-	fmt.Println(notValidated)
 	for i := 0; i < len(notValidated); i++ {
 		if !notValidated[i] {
 			fmt.Fprint(res, ("This file is not validated"))
@@ -100,6 +115,15 @@ func HandleMultiply(res http.ResponseWriter, req *http.Request) {
 	}
 	defer file.Close()
 	records := matrix.ReadCsv(file)
+
+	notValidated := []bool{matrix.MatrixIsSquare(records), matrix.MatrixIsNotEmpty(records)}
+	for i := 0; i < len(notValidated); i++ {
+		if !notValidated[i] {
+			fmt.Fprint(res, ("This file is not validated"))
+			return
+		}
+	}
+
 	response := controllers.Multiply(records)
 
 	fmt.Fprint(res, response, "\n")

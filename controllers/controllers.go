@@ -42,6 +42,7 @@ func Invert(records [][]string) string {
 	return response
 }
 
+//todo refatorar doc
 func Flatten(records [][]string) string {
 	var list string
 	var response string
