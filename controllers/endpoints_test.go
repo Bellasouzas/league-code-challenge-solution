@@ -5,7 +5,6 @@ import (
 	"testing"
 )
 
-// This test verify if a square matrix as a string
 func TestEcho(t *testing.T) {
 	records := [][]string{
 		{"1", "2", "3"},
@@ -19,15 +18,28 @@ func TestEcho(t *testing.T) {
 	}
 }
 
-//func TestInvert(t *testing.T) {
-//	records := [][]string {
-//		{"1","2","3"},
-//		{"4","5","6"},
-//		{"7","8","9"},
-//	}
-//	got := "1,2,3\n4,5,6\n7,8,9"
-//	want :=  controllers.Invert(records)
-//	if got != want {
-//		t.Errorf("The result is not correct, got %v, expected %v", got, want)
-//	}
-//}
+func TestInvert(t *testing.T) {
+	records := [][]string{
+		{"1", "2", "3"},
+		{"4", "5", "6"},
+		{"7", "8", "9"},
+	}
+	got := "1,4,7\n2,5,8\n3,6,9\n"
+	want := controllers.Invert(records)
+	if got != want {
+		t.Errorf("The result is not correct, got %v, expected %v", got, want)
+	}
+}
+
+func TestFlatten(t *testing.T) {
+	records := [][]string{
+		{"1", "2", "3"},
+		{"4", "5", "6"},
+		{"7", "8", "9"},
+	}
+	got := "1,2,3,4,5,6,7,8,9"
+	want := controllers.Flatten(records)
+	if got != want {
+		t.Errorf("The result is not correct, got %v, expected %v", got, want)
+	}
+}
